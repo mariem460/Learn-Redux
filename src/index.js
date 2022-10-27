@@ -1,11 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { legacy_createStore as createStore} from 'redux'
+import allReducers from './reducers/index';
+import { Provider } from 'react-redux';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const myStore = createStore(
+      allReducers,  
+      //the second parans is for the extension of reduc dev tools
+      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 /*
 //creation of an action:
 //the word TYPE is always there, it reffers to the name of the action
@@ -39,14 +44,19 @@ store.dispatch(increment())
 store.dispatch(increment())
 store.dispatch(decrement())
 store.dispatch(decrement())
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+
 //STORE --> globalized state ---> the state of the whole app that could be shared to all part of the app
 //ACTIOn --> just an action to be token so it does somthg(it is just a name), a function that returns an object
 //REDUCER --> the ACTION will be called inside the reducer and check which action it is, and then modify the STATE inside the STORE
 //DISPATCH ---> execute our actions
 */
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <Provider store={myStore}>
+        <App />
+    </Provider>
+   
+  </React.StrictMode>
+);
 reportWebVitals();
