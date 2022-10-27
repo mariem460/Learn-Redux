@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { legacy_createStore as createStore} from 'redux'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+/*
 //creation of an action:
 //the word TYPE is always there, it reffers to the name of the action
 const increment = ()=> {
@@ -47,4 +48,5 @@ root.render(
 //ACTIOn --> just an action to be token so it does somthg(it is just a name), a function that returns an object
 //REDUCER --> the ACTION will be called inside the reducer and check which action it is, and then modify the STATE inside the STORE
 //DISPATCH ---> execute our actions
+*/
 reportWebVitals();
